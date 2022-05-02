@@ -32,50 +32,54 @@
                     <button class="btn btn-primary ls" data-l="Continue" id="btn_check_reference">Continue</button>
                 </div>
             </div>
-            <div class="screen card animate__animated animate__zoomIn" id="agreement" style="display: none">
-                <div class="card-body">
-                    <h5 class="card-title ls" data-l="IdentityVerificationHead"><i class="fa fa-user-shield"></i>
-                        Identity Verification</h5>
-                    <h6 class="card-subtitle mb-2 text-muted companyname"></h6>
-                    <p class="card-text custom_welcome_text"></p>
-                    <p class="card-text biometricVerificationPhoto ls" data-l="IntroBio">Você está prestes a iniciar um
-                        processo de verificação de identidade enviando uma <strong>identificação emitida pelo governo
-                            documento</strong> e <strong>selfie
-                            imagem</strong>. Suas informações de identidade serão enviadas para <span
-                                class="companyname"></span> para processamento adicional.</p>
-                    <p class="card-text biometricVerificationVideo ls" data-l="IntroBioVideo">Você está prestes a iniciar um
-                        processo de verificação de identidade enviando uma <strong>identificação emitida pelo governo
-                            documento</strong> e <strong>selfie
-                            vídeo</strong>. Suas informações de identidade serão enviadas para <span class="companyname"></span>
-                        para processamento posterior.</p>
-                    <p class="card-text biometricVerificationOff ls" data-l="IntroNoBio">Você está prestes a iniciar um
-                        processo de verificação de identidade enviando uma <strong>identificação emitida pelo governo
-                            documento</strong> e <strong>selfie
-                            vídeo</strong>. Suas informações de identidade serão enviadas para <span class="companyname"></span>
-                        para processamento posterior.</p>
-                    <div class="idlist" style="margin-bottom: 15px;">
-                        <span id="AcceptP" class="text-success"><i class="fa fa-check"></i> <span class="ls"
-                                data-l="Passport">Passport</span></span>
-                        <span id="AcceptD" class="text-success"><i class="fa fa-check"></i> <span class="ls"
-                                data-l="DL">Driver's License</span></span>
-                        <span id="AcceptI" class="text-success"><i class="fa fa-check"></i> <span class="ls"
-                                data-l="IDCard">ID Card</span></span>
-                        <span id="DeclineP" class="text-danger"><i class="fa fa-times"></i> <span class="ls"
-                                data-l="Passport">Passport</span></span>
-                        <span id="DeclineD" class="text-danger"><i class="fa fa-times"></i> <span class="ls"
-                                data-l="DL">Driver's License</span></span>
-                        <span id="DeclineI" class="text-danger"><i class="fa fa-times"></i> <span class="ls"
-                                data-l="IDCard">ID Card</span></span>
-                    </div>
-                    <!-- optional terms agreement checkbox
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="tosCheck" checked="">
-                        <label class="custom-control-label ls" data-l="toscheck" for="tosCheck">I agree to the <a href="#" target="_blank">service agreement</a></label>
-                    </div>
-                </div>-->
-                    <button class="btn btn-primary ls" data-l="StartVerification" id="btn_start_verification">Iniciar verificação</button>
-                </div>
+<!--            <div class="screen card animate__animated animate__zoomIn" id="agreement" style="display: none">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title ls" data-l="IdentityVerificationHead"><i class="fa fa-user-shield"></i>-->
+<!--                        Identity Verification</h5>-->
+<!--                    <h6 class="card-subtitle mb-2 text-muted companyname"></h6>-->
+<!--                    <p class="card-text custom_welcome_text"></p>-->
+<!--                    <p class="card-text biometricVerificationPhoto ls" data-l="IntroBio">Você está prestes a iniciar um-->
+<!--                        processo de verificação de identidade enviando uma <strong>identificação emitida pelo governo-->
+<!--                            documento</strong> e <strong>selfie-->
+<!--                            imagem</strong>. Suas informações de identidade serão enviadas para <span-->
+<!--                                class="companyname"></span> para processamento adicional.</p>-->
+<!--                    <p class="card-text biometricVerificationVideo ls" data-l="IntroBioVideo">Você está prestes a iniciar um-->
+<!--                        processo de verificação de identidade enviando uma <strong>identificação emitida pelo governo-->
+<!--                            documento</strong> e <strong>selfie-->
+<!--                            vídeo</strong>. Suas informações de identidade serão enviadas para <span class="companyname"></span>-->
+<!--                        para processamento posterior.</p>-->
+<!--                    <p class="card-text biometricVerificationOff ls" data-l="IntroNoBio">Você está prestes a iniciar um-->
+<!--                        processo de verificação de identidade enviando uma <strong>identificação emitida pelo governo-->
+<!--                            documento</strong> e <strong>selfie-->
+<!--                            vídeo</strong>. Suas informações de identidade serão enviadas para <span class="companyname"></span>-->
+<!--                        para processamento posterior.</p>-->
+<!--                    <div class="idlist" style="margin-bottom: 15px;">-->
+<!--                        <span id="AcceptP" class="text-success"><i class="fa fa-check"></i> <span class="ls"-->
+<!--                                data-l="Passport">Passaporte</span></span>-->
+<!--                        <span id="AcceptD" class="text-success"><i class="fa fa-check"></i> <span class="ls"-->
+<!--                                data-l="DL">Driver's License</span></span>-->
+<!--                        <span id="AcceptI" class="text-success"><i class="fa fa-check"></i> <span class="ls"-->
+<!--                                data-l="IDCard">ID Card</span></span>-->
+<!--                        <span id="DeclineP" class="text-danger"><i class="fa fa-times"></i> <span class="ls"-->
+<!--                                data-l="Passport">Passport</span></span>-->
+<!--                        <span id="DeclineD" class="text-danger"><i class="fa fa-times"></i> <span class="ls"-->
+<!--                                data-l="DL">Driver's License</span></span>-->
+<!--                        <span id="DeclineI" class="text-danger"><i class="fa fa-times"></i> <span class="ls"-->
+<!--                                data-l="IDCard">ID Card</span></span>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; optional terms agreement checkbox-->
+<!--                <div class="form-group">-->
+<!--                    <div class="custom-control custom-checkbox">-->
+<!--                        <input type="checkbox" class="custom-control-input" id="tosCheck" checked="">-->
+<!--                        <label class="custom-control-label ls" data-l="toscheck" for="tosCheck">I agree to the <a href="#" target="_blank">service agreement</a></label>-->
+<!--                    </div>-->
+<!--                </div>&ndash;&gt;-->
+<!--                    <button class="btn btn-primary ls" data-l="StartVerification" id="btn_start_verification">Iniciar verificação</button>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div  id="agreement" style="display: none">
+                <h2>Blquinho bem bosta só para ver se isso é totalmente customizavel</h2>
+                <button class="btn btn-primary ls" data-l="StartVerification" id="btn_start_verification">Inicie logo a verificação</button>
             </div>
             <div class="screen card animate__animated animate__zoomIn" id="phoneVerification" style="display: none">
                 <div class="card-body">
