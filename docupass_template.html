@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Identity Verification - ID Analyzer</title>
+    <!-- Custom CSS, modify included CSS and upload it to your own server -->
+    <link rel="stylesheet" href="https://www.example.com/docupass_style.css">
+    <!-- End Layout CSS  -->
+</head>
+<body>
+<section class="fullscreen">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-xs-11">
+        <div class="screen card animate__animated animate__zoomIn" id="preloader">
+            <div class="card-body">
+                <img src="asset/loading2.svg" style="width: 118px; height: auto">
+                <div>Loading...</div>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="welcome" style="display: none">
+            <div class="card-body">
+                <h5 class="card-title ls" data-l="IdentityVerificationHead"><i class="fa fa-user-shield"></i> Identity Verification</h5>
+                <p class="card-text ls" data-l="EnterRef">To begin your identity verification, please enter your identity verification reference code below.</p>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg ls-p" data-l="ReferenceCode" name="referenceCode" id="referenceCode" placeholder="Reference Code">
+                </div>
+                <button class="btn btn-primary ls" data-l="Continue" id="btn_check_reference">Continue</button>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="agreement" style="display: none">
+            <div class="card-body">
+                <h5 class="card-title ls" data-l="IdentityVerificationHead"><i class="fa fa-user-shield"></i> Identity Verification</h5>
+                <h6 class="card-subtitle mb-2 text-muted companyname"></h6>
+                <p class="card-text custom_welcome_text"></p>
+                <p class="card-text biometricVerificationPhoto ls" data-l="IntroBio">You are about to start an identity verification process by uploading a <strong>government-issued identification document</strong>, and <strong>selfie
+                    picture</strong>. Your identity information will be sent to <span class="companyname"></span> for further processing.</p>
+                <p class="card-text biometricVerificationVideo ls" data-l="IntroBioVideo">You are about to start an identity verification process by uploading a <strong>government-issued identification document</strong>, and <strong>selfie
+                    video</strong>. Your identity information will be sent to <span class="companyname"></span> for further processing.</p>
+                <p class="card-text biometricVerificationOff ls" data-l="IntroNoBio">You are about to start an identity verification process by uploading a <strong>government-issued identification document</strong>. Your identity
+                    information will be sent to <span class="companyname"></span> for further processing.</p>
+                <div class="idlist" style="margin-bottom: 15px;">
+                    <span id="AcceptP" class="text-success"><i class="fa fa-check"></i> <span class="ls" data-l="Passport">Passport</span></span>
+                    <span id="AcceptD" class="text-success"><i class="fa fa-check"></i> <span class="ls" data-l="DL">Driver's License</span></span>
+                    <span id="AcceptI" class="text-success"><i class="fa fa-check"></i> <span class="ls" data-l="IDCard">ID Card</span></span>
+                    <span id="DeclineP" class="text-danger"><i class="fa fa-times"></i> <span class="ls" data-l="Passport">Passport</span></span>
+                    <span id="DeclineD" class="text-danger"><i class="fa fa-times"></i> <span class="ls" data-l="DL">Driver's License</span></span>
+                    <span id="DeclineI" class="text-danger"><i class="fa fa-times"></i> <span class="ls" data-l="IDCard">ID Card</span></span>
+                </div>
+                <!-- optional terms agreement checkbox
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="tosCheck" checked="">
+                        <label class="custom-control-label ls" data-l="toscheck" for="tosCheck">I agree to the <a href="#" target="_blank">service agreement</a></label>
+                    </div>
+                </div>-->
+                <button class="btn btn-primary ls" data-l="StartVerification" id="btn_start_verification">Start Verification</button>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="phoneVerification" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="PhoneVerificationHead"><i class="fad fa-phone"></i> Phone Verification</h4>
+                <p class="card-text ls" data-l="EnterPhone">Please enter your phone number</p>
+                <div id="enterPhoneNumber">
+                    <div class="form-group">
+                        <select class="form-control" id="phoneCountryCode"></select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control ls-p" data-l="PhoneNumber" id="phoneNumber" placeholder="Phone Number" autocomplete="no" inputmode="numeric">
+                    </div>
+                </div>
+                <div id="staticPhoneNumber">
+                    <h4 class="mb-3" id="presetPhoneNumber"></h4>
+                </div>
+                <button class="btn btn-primary ls" data-l="TextMe" id="btn_send_text"><i class="far fa-sms"></i> Text Me</button>
+                <button class="btn btn-secondary ls" data-l="CallMe" id="btn_send_call"><i class="fal fa-phone-volume"></i> Call Me</button>
+                <div id="codeConfirmation" class="mt-3 animate__animated animate__zoomIn" style="display: none">
+                    <div id="codeSentAlert" class="alert alert-success"><i class="fad fa-comment-alt-check"></i> Verification code sent! Please enter the code below.</div>
+                    <div class="form-group">
+                        <input class="form-control-lg form-control ls-p" data-l="VerificationCode" id="phoneVerificationCode" placeholder="Verification Code" inputmode="numeric" maxlength="6" autocomplete="no">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="documentSelection" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="DocumentSelectionHead"><i class="fa fa-id-card"></i> Document Selection</h4>
+                <p class="card-text ls" data-l="SelectDoc">Select a type of document for verification.</p>
+                <div class="form-group">
+                    <select class="form-control-lg form-control" id="documentSelector">
+                        <option value="0" data-type="P" class="ls" data-l="Passport">Passport</option>
+                        <option value="1" data-type="D" class="ls" data-l="DL">Driver's License</option>
+                        <option value="2" data-type="I" class="ls" data-l="IDCard">ID Card</option>
+                    </select>
+                </div>
+                <button class="showscreen btn btn-secondary ls" data-l="Back" data-screen="agreement">Back</button>
+                <button class="btn btn-primary ls" data-l="Continue" id="btn_confirm_document_selection">Continue</button>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="videoGuide" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="SelfieVideoHead"><i class="fad fa-info-square"></i> Selfie Video</h4>
+                <p class="card-text mobiletext ls" data-l="SelfieVideoIntroM">In the next step you will be asked to record a selfie video, <strong>you must speak out loud the follow 4 digits while recording the video</strong>.</p>
+                <p class="card-text iframetext ls" data-l="SelfieVideoIntroI">In the next step you will be asked to upload a selfie video, <strong>you must speak out loud the follow 4 digits while recording the video</strong>.</p>
+                <p class="passcode" style="text-align: center; font-size: 40px; letter-spacing: 5px; font-weight: bold"></p>
+                <p style="text-align: center"><img src="asset/selfie-guide.jpg" style="max-height:30vh; max-width: 80%"></p>
+                <button class="btn btn-primary ls" data-l="beginRecording" id="btn_record_selfie_video"><i class="fad fa-video"></i> Record Video</button>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="selfieGuide" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="SelfieHead"><i class="fad fa-info-square"></i> Selfie Picture</h4>
+                <p class="card-text mobiletext ls" data-l="SelfieIntroM">In the next step you will be asked to take a selfie picture.</p>
+                <p class="card-text iframetext ls" data-l="SelfieIntroI">In the next step you will be asked to upload a selfie picture.</p>
+                <p style="text-align: center"><img src="asset/selfie-guide.jpg" style="max-height:30vh; max-width: 80%"></p>
+                <button class="btn btn-primary  ls" data-l="Continue" id="btn_take_selfie_photo">Continue</button>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="documentGuide0" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="PassportHead"><i class="fad fa-info-square"></i> Passport</h4>
+                <p class="card-text mobiletext ls" data-l="PassportIntroM">Please flip your passport to the <strong>bio data page</strong>, in the next step you will take a photo of the biodata page.</p>
+                <p class="card-text iframetext ls" data-l="PassportIntroI">Please flip your passport to the <strong>bio data page</strong>, in the next step you will upload a photo of the biodata page.</p>
+                <p style="text-align: center"><img src="asset/passport-guide.jpg" style="max-height:40vh; max-width: 80%"></p>
+                <button class="showscreen btn btn-secondary ls" data-l="Back" data-screen="documentSelection">Back</button>
+                <button class="btn btn-primary ls" data-l="beginCapture" id="btn_capture_passport"><i class="fad fa-camera-retro"></i> Take Photo</button>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="documentGuide1" style="display: none">
+            <div class="card-body">
+                <div class="dltext">
+                    <h4 class="card-title ls" data-l="DLHead"><i class="fad fa-info-square"></i> Driver's License Front</h4>
+                    <p class="card-text mobiletext ls" data-l="DLIntroM">You need to take photo of the <strong>front</strong> side of your driver's license in the next step.</p>
+                    <p class="card-text iframetext ls" data-l="DLIntroI">You need to upload photo of the <strong>front</strong> side of your driver's license in the next step.</p>
+                    <p style="text-align: center"><img src="asset/dl-guide-front.jpg" style="max-height:40vh; max-width: 80%"></p>
+                </div>
+                <div class="idtext">
+                    <h4 class="card-title ls" data-l="IDHead"><i class="fad fa-info-square"></i> ID Card Front</h4>
+                    <p class="card-text mobiletext ls" data-l="IDIntroM">You need to take photo of the <strong>front</strong> side of your identification card in the next step.</p>
+                    <p class="card-text iframetext ls" data-l="IDIntroI">You need to upload photo of the <strong>front</strong> side of your identification card in the next step.</p>
+                    <p style="text-align: center"><img src="asset/id-guide-front.jpg" style="max-height:40vh; max-width: 80%"></p>
+                </div>
+                <button class="showscreen btn btn-secondary ls" data-l="Back" data-screen="documentSelection">Back</button>
+                <button class="btn btn-primary ls" data-l="beginCapture" id="btn_capture_id_front"><i class="fad fa-camera-retro"></i> Take Photo</button>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="documentGuide1Back" style="display: none">
+            <div class="card-body">
+                <div class="dltext">
+                    <h4 class="card-title ls" data-l="DLHeadBack"><i class="fad fa-info-square"></i> Driver License Back</h4>
+                    <p class="card-text mobiletext ls" data-l="DLIntroMBack">You need to take photo of the <strong>back</strong> side of your driver's license in the next step.</p>
+                    <p class="card-text iframetext ls" data-l="DLIntroIBack">You need to upload photo of the <strong>back</strong> side your driver's license in the next step.</p>
+                    <p style="text-align: center"><img src="asset/id-guide-back.jpg" style="max-height:40vh; max-width: 80%"></p>
+                </div>
+                <div class="idtext">
+                    <h4 class="card-title ls" data-l="IDHeadBack"><i class="fad fa-info-square"></i> ID Card Back</h4>
+                    <p class="card-text mobiletext ls" data-l="IDIntroMBack">You need to take photo of the <strong>back</strong> side of your identification card in the next step.</p>
+                    <p class="card-text iframetext ls" data-l="IDIntroIBack">You need to upload photo of the <strong>back</strong> side of your identification card in the next step.</p>
+                    <p style="text-align: center"><img src="asset/id-guide-back.jpg" style="max-height:40vh; max-width: 80%"></p>
+                </div>
+                <button class="btn btn-primary  ls" data-l="beginCapture" id="btn_capture_id_back"><i class="fad fa-camera-retro"></i> Take Photo</button>
+            </div>
+        </div>
+        <div class="screen card animate__animated animate__zoomIn" id="pendingVerification" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="Verifying">Verifying...</h4>
+                <p class="card-text" style="text-align: center; margin-top: 30px; margin-bottom: 30px;"><img src="asset/verifying.svg" style="width: 138px; height: auto"></p>
+                <p class="card-text ls" data-l="VerifyingTxt" style="text-align: center">We are verifying your document, this will take a moment.</p>
+            </div>
+        </div>
+        <div class="screen card text-white bg-success animate__animated animate__zoomIn" id="verificationSuccess" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="SuccessHead"><i class="fa fa-check-circle-o"></i> Verification Success</h4>
+                <p class="card-text ls" data-l="SuccessText">You have successfully completed identity verification process, you may now close this window.</p>
+            </div>
+        </div>
+        <div class="screen card text-white bg-danger animate__animated animate__zoomIn" id="verificationFailed" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="FailHead"><i class="fa fa-times-circle-o"></i> Verification Failed</h4>
+                <p class="card-text" id="failedreason"></p>
+                <button class="btn btn-secondary  ls" data-l="Retry" id="btn_retry">Try Again</button>
+            </div>
+        </div>
+        <div class="screen card text-white bg-danger animate__animated animate__zoomIn" id="criticalError" style="display: none">
+            <div class="card-body">
+                <h4 class="card-title ls" data-l="ErrorHead"><i class="fa fa-exclamation-triangle"></i> Error</h4>
+                <p class="card-text" id="criticalErrorMessage"></p>
+            </div>
+        </div>
+        <p class="footer" style="display: none"><img src="asset/logo1.png" class="branding"></p>
+    </div>
+</section>
+<div id="contract" class="animate__animated animate__fadeIn" style="display: none;">
+    <div id="contract_header" class="ls" data-l="ContractHead">
+        <i class="fad fa-file-signature"></i> Review Legal Document
+    </div>
+    <div id="contract_container"></div>
+    <div id="contract_toolbar">
+        <button class="btn btn-block btn-info" id="btn_contract"></button>
+    </div>
+    <div id="signnature_footer">
+        <i class="fad fa-lock-alt"></i> Secured Document Signing Service provided by ID Analyzer DocuPass on behalf of <span class="companyname"></span>.
+    </div>
+    <div style="display: none" class="signature_field notsigned" id="signature_field_template">
+        <img src="asset/signature.svg"> <span class="ls" data-l="ClickToSign">CLICK TO SIGN</span>
+    </div>
+    <div id="signatureCapture" style="display: none;">
+        <div id="signnature_header" class="ls" data-l="PleaseSignBelow">
+            Please Sign Below
+        </div>
+        <div id="canvas_container">
+            <canvas id="signpad"></canvas>
+        </div>
+        <div id="signnature_toolbar">
+            <button type="button" class="btn btn-warning ls" data-l="CancelSignature" id="btn_cancel_signature"><i class="fa fa-times"></i> Cancel</button>
+            <button type="button" class="btn btn-secondary ls" data-l="ClearSignature" id="btn_clear_signature"><i class="fa fa-eraser"></i> Clear</button>
+            <button type="button" class="btn btn-success ls" data-l="AcceptSignature" id="btn_confirm_signature"><i class="fa fa-check"></i> Confirm</button>
+        </div>
+    </div>
+</div>
+<input id="fileinput" data-documenttype="" type="file" accept="image/*" capture="environment" style="position: fixed; right: 100%; bottom: 100%;">
+</body>
+</html>

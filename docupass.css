@@ -1,0 +1,288 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.fullscreen {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footer {
+    color: #888;
+    font-size: 10px;
+    margin-top: 5px;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+}
+
+.footer img {
+    max-height: 18px;
+}
+
+.idlist > span {
+    margin-right: 2px;
+    display: inline-block
+}
+
+.gradient {
+    background: #ece9e6;
+    background: -webkit-linear-gradient(to right, #ece9e6, #ffffff);
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+
+}
+
+.transparent {
+    background: none transparent !important;
+}
+
+.card-text {
+    line-height: 1.2 !important;
+}
+
+
+.darktext {
+    color: #000 !important;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+
+#preloader {
+    background: none;
+    border: none;
+}
+
+#preloader .card-body {
+    text-align: center;
+    color: #888;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 1);
+}
+
+h4, h5 {
+    font-size: 1.1rem !important;
+}
+
+#phoneVerificationCode::placeholder {
+    letter-spacing: normal !important;
+    font-weight: normal !important;
+}
+
+#phoneVerificationCode {
+    text-align: center;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+
+#contract {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    z-index: 10;
+}
+
+#signatureCapture {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    z-index: 12;
+    background: #FFF;
+    border: solid 1px #000;
+}
+
+#contract_container {
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #FFF;
+    -webkit-box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.15);
+    font-family: "Tahoma", serif;
+    width: 100%;
+    max-width: 210mm;
+    overflow: auto;
+    flex-grow: 1;
+}
+
+#contract_container h1,#contract_container h2,#contract_container h3,#contract_container h4,#contract_container h5,#contract_container h6{
+    font-family: "Arial", serif;
+    color: revert;
+    font-weight: revert;
+    font-size: revert;
+}
+
+#contract_container img, #contract_container p {
+    max-width: 100% !important;
+}
+
+#contract_header {
+    max-width: 210mm;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    text-shadow: 0 1px 0 #FFF;
+    font-weight: bold;
+    text-align: center;
+}
+
+#contract_toolbar {
+    max-width: 210mm;
+    margin-top: 15px;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9c9c9c;
+    border: 0 none #ffffff;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b8deff;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #80bdff;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+    border: 0 none #ffffff;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: none;
+}
+
+::-webkit-scrollbar-track:active {
+    background: none;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.signature_field {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #888;
+    max-width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    color: #222;
+
+}
+
+.notsigned {
+    border: solid 2px #ee1e2d;
+    background-image: url("signaturebg.svg");
+    background-size: cover;
+}
+
+.signed {
+    border: solid 2px #00a45c;
+}
+
+.signed img {
+    width: 100%; /* or any custom size */
+    height: 100%;
+    object-fit: contain;
+}
+
+.signature_field:hover {
+    opacity: 1;
+}
+
+.signature_field.notsigned img {
+    margin-right: 3px;
+    height: 30px;
+    width: 30px;
+}
+
+#signpad {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    object-fit: contain;
+}
+
+#canvas_container {
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+
+}
+
+#signnature_toolbar {
+    width: 100%;
+    display: flex;
+}
+
+#signnature_toolbar button {
+    flex: 1;
+}
+
+#signnature_toolbar button:not(:last-child) {
+    margin-right: 3px;
+}
+
+#signnature_header {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+
+}
+
+#signnature_footer {
+    padding-top: 10px;
+    font-size: 10px;
+    text-shadow: 0 1px 0 #FFF;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
